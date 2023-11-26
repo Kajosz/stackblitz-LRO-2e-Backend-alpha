@@ -4,12 +4,12 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-var path = require('path');
+//var path = require('path');
 const port = process.env.PORT || 5000;
 
 
 app.get('/', (req, res) => {
-  res.sendFile(resolve(__dirname, 'pages/index.html'));
+  res.send("Hello, this is Let's Roll One backend. Nothing to do here.")
 });
 
 app.listen(port, () => {
