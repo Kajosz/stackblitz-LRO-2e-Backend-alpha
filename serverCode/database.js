@@ -22,8 +22,17 @@ const headers = {
 
 // Let's roll one constants
 
+//const IDsSource = {collection: , _id: }
+//const mailsSource = {collection: , _id: }
+
 exports.getCharactersIDs = async function (){
-    const charactersIDs = await databaseRequest(READ_ACTION, )
+    const charactersIDs = await databaseRequest(READ_ACTION, IDsSource);
+    return charactersIDs;
+}
+
+exports.getMailsDictionary = async function (){
+    const charactersIDs = await databaseRequest(READ_ACTION, mailsSource);
+    return charactersIDs;
 }
 
 function databaseRequest(order, requestData){
