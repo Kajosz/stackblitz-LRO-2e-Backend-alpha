@@ -35,6 +35,13 @@ exports.getMailsDictionary = async function (){
     return charactersIDs;
 }
 
+exports.addNewCharacter = async function(characterData){
+    characterData._id = IDsSource._id;
+    characterData.collection = IDsSource.collection;
+    await databaseRequest(UPDATE_ACTION);
+    return true;
+}
+
 function databaseRequest(order, requestData){
     if (!actions.includes(order)) return;
     if (!requestData.collection) return;
