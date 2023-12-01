@@ -1,7 +1,3 @@
-# Simple express demo
+# LRO new version - Server
 
-> Express: fast, unopinionated, minimalist web framework for Node.js
-
-This project shows a simple express server serving a single HTML page and using `express.static` to serve static files.
-
-Check out the [express documentation](https://expressjs.com/) for more information.
+Server for new version of my LRO server ([frontend here](https://github.com/kajetan-szczurowski/LRO-new-version)). This project is on very early stage of development. There are mostly placeholders for future programs.
