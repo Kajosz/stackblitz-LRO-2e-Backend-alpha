@@ -22,7 +22,7 @@ const addingCodes = [];
 
 
 app.get('/', (req, res) => {
-  console.log('consolling');
+  console.log('consolling test');
   res.send("Hello, this is Let's Roll One backend. Nothing to do here. :)")
 });
 
