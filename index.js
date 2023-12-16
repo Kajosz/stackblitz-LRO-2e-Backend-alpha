@@ -1,14 +1,16 @@
-const express = require('express');
-const crypto = require('crypto');
-const app = express();
-const { createServer } = require('node:http');
-const { Server } = require('socket.io');
-const server = createServer(app);
-const io = new Server(app);
-const port = process.env.PORT || 5000;
+// const express = require('express');
+// const crypto = require('crypto');
+// const app = express();
+// const { createServer } = require('node:http');
+// const { Server } = require('socket.io');
+// const server = createServer(app);
+// const io = new Server(app);
+// const port = process.env.PORT || 5000;
 
-const db = require("./serverCode/database.js");
-const wg = require("./serverCode/wanderersGuide.js")
+// const db = require("./serverCode/database.js");
+// const wg = require("./serverCode/wanderersGuide.js")
+
+const io = require('socket.io')(5000);
 
 // const characters = db.getCharactersIDs();
 // const mailsDictionary = db.getMailsDictionary();
@@ -16,29 +18,31 @@ const wg = require("./serverCode/wanderersGuide.js")
 //const wgApiKey = FROM .env
 //const frontEndUrl = FROM .env
 
-const addingCodes = [];
+//****** */
+
+// const addingCodes = [];
 
 
-app.get('/', (req, res) => {
-  console.log('consolling test');
-  res.send("Hello, this is Let's Roll One backend. Nothing to do here. :) XDXD")
-});
+// app.get('/', (req, res) => {
+//   console.log('consolling test');
+//   res.send("Hello, this is Let's Roll One backend. Nothing to do here. :) XDXD")
+// });
 
-app.get('/new-char-code', (req, res) => {
-  const newCode = crypto.randomBytes(16).toString('hex');
-  addingCodes.push(newCode);
-  res.send(newCode);
-})
+// app.get('/new-char-code', (req, res) => {
+//   const newCode = crypto.randomBytes(16).toString('hex');
+//   addingCodes.push(newCode);
+//   res.send(newCode);
+// })
 
-app.get('/new-character', async (req, res) => wg.addNewCharacter(req, res, db, addingCodes, wgTokens));
+// app.get('/new-character', async (req, res) => wg.addNewCharacter(req, res, db, addingCodes, wgTokens));
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Example app listening at http://localhost:${port}`);
+// });
 
-server.listen(3000, () => {
-  console.log('Server Socketowy');
-});
+// server.listen(3000, () => {
+//   console.log('Server Socketowy');
+// });
 
 io.on('connection', (socket) => {
   console.log("hello in the socket")
