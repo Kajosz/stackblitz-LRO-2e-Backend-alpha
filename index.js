@@ -72,6 +72,7 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log('a user connected');
+    socket.emit('dzien Dobry?')
     socket.on('message', (ms) => {
         io.emit('message', ms);
     });
