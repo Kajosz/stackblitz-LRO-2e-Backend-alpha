@@ -4,7 +4,7 @@ const app = express();
 const { createServer } = require('node:http');
 const { Server } = require('socket.io');
 const server = createServer(app);
-const io = new Server(server);
+const io = new Server(app);
 const port = process.env.PORT || 5000;
 
 const db = require("./serverCode/database.js");
@@ -32,9 +32,9 @@ app.get('/new-char-code', (req, res) => {
 
 app.get('/new-character', async (req, res) => wg.addNewCharacter(req, res, db, addingCodes, wgTokens));
 
-// app.listen(port, () => {
-//   console.log(`Example app listening at http://localhost:${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
 
 server.listen(3000, () => {
   console.log('Server Socketowy');
