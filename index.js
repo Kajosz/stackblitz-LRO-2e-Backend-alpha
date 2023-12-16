@@ -5,12 +5,13 @@
 // const { Server } = require('socket.io');
 // const server = createServer(app);
 // const io = new Server(app);
-// const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 // const db = require("./serverCode/database.js");
 // const wg = require("./serverCode/wanderersGuide.js")
 
-const io = require('socket.io')(5000);
+const io = require('socket.io')(port);
+console.log(`Port: ${port}.`)
 
 // const characters = db.getCharactersIDs();
 // const mailsDictionary = db.getMailsDictionary();
