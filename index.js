@@ -36,6 +36,7 @@ app.get('/new-character', async (req, res) => wg.addNewCharacter(req, res, db, a
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
+  console.log('Siema?')
 });
 
 io.on('connection', (socket) => {
