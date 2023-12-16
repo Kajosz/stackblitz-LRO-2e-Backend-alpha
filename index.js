@@ -5,13 +5,13 @@
 // const { Server } = require('socket.io');
 // const server = createServer(app);
 // const io = new Server(app);
-const port = process.env.PORT || 5000;
+// const port = process.env.PORT || 5000;
 
 // const db = require("./serverCode/database.js");
 // const wg = require("./serverCode/wanderersGuide.js")
 
-const io = require('socket.io')(port);
-console.log(`Port: ${port}.`)
+// const io = require('socket.io')(port);
+// console.log(`Port: ${port}.`)
 
 // const characters = db.getCharactersIDs();
 // const mailsDictionary = db.getMailsDictionary();
@@ -45,9 +45,34 @@ console.log(`Port: ${port}.`)
 //   console.log('Server Socketowy');
 // });
 
-io.on('connection', (socket) => {
-  console.log("hello in the socket")
+// io.on('connection', (socket) => {
+//   console.log("hello in the socket")
 
-  socket.on('disconnect', () => {})
-  socket.on('chat-message', message => {})
-})
+//   socket.on('disconnect', () => {})
+//   socket.on('chat-message', message => {})
+// })
+
+
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+    res.write(`<h1>HEJ! Socket IO Start on Port : ${PORT}</h1>`);
+    res.end();
+});
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.on('message', (ms) => {
+        io.emit('message', ms);
+    });
+});
+
+server.listen(PORT, () => {
+    console.log('listening on ', PORT);
+});
