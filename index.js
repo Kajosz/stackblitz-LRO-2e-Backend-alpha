@@ -2,10 +2,10 @@ const express = require('express');
 const crypto = require('crypto');
 const app = express();
 const http = require('http');
-const server = http.createServer(app);
-const { Server } = require("socket.io");
-// const io = new Server(server);
-const io = require('socket.io')(3002);
+const server = http.createServer();
+import { Server } from require("socket.io");
+const io = new Server(server, {});
+// const io = require('socket.io')(3002);
 //var path = require('path');
 const port = process.env.PORT || 5000;
 
@@ -46,3 +46,5 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {})
   socket.on('chat-message', message => {})
 })
+
+server.listen(3002);
