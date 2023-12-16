@@ -1,12 +1,10 @@
 const express = require('express');
 const crypto = require('crypto');
 const app = express();
-const http = require('http');
-const server = http.createServer();
-const socket = require("socket.io");
-const io = new socket.Server(server, {});
-// const io = require('socket.io')(3002);
-//var path = require('path');
+const { createServer } = require('node:http');
+const { Server } = require('socket.io');
+const server = createServer(app);
+const io = new Server(server);
 const port = process.env.PORT || 5000;
 
 const db = require("./serverCode/database.js");
@@ -23,7 +21,7 @@ const addingCodes = [];
 
 app.get('/', (req, res) => {
   console.log('consolling test');
-  res.send("Hello, this is Let's Roll One backend. Nothing to do here. :)")
+  res.send("Hello, this is Let's Roll One backend. Nothing to do here. :) XDXD")
 });
 
 app.get('/new-char-code', (req, res) => {
@@ -34,8 +32,12 @@ app.get('/new-char-code', (req, res) => {
 
 app.get('/new-character', async (req, res) => wg.addNewCharacter(req, res, db, addingCodes, wgTokens));
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+// app.listen(port, () => {
+//   console.log(`Example app listening at http://localhost:${port}`);
+// });
+
+server.listen(3000, () => {
+  console.log('Server Socketowy');
 });
 
 io.on('connection', (socket) => {
@@ -44,7 +46,3 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {})
   socket.on('chat-message', message => {})
 })
-
-server.listen(3002, ()=> {
-  console.log('jestem serverem Socketa.')
-});
