@@ -4,16 +4,17 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
-const io = new Server(server);
+// const io = new Server(server);
+const io = require('socket.io')(3002);
 //var path = require('path');
 const port = process.env.PORT || 5000;
 
 const db = require("./serverCode/database.js");
 const wg = require("./serverCode/wanderersGuide.js")
 
-const characters = db.getCharactersIDs();
-const mailsDictionary = db.getMailsDictionary();
-const wgTokens = db.getTokens();
+// const characters = db.getCharactersIDs();
+// const mailsDictionary = db.getMailsDictionary();
+// const wgTokens = db.getTokens();
 //const wgApiKey = FROM .env
 //const frontEndUrl = FROM .env
 
@@ -21,7 +22,7 @@ const addingCodes = [];
 
 
 app.get('/', (req, res) => {
-  res.send("Hello, this is Let's Roll One backend. Nothing to do here.")
+  res.send("Hello, this is Let's Roll One backend. Nothing to do here. :)")
 });
 
 app.get('/new-char-code', (req, res) => {
@@ -37,6 +38,7 @@ app.listen(port, () => {
 });
 
 io.on('connection', (socket) => {
+  console.log("hello in the socket")
 
   socket.on('disconnect', () => {})
   socket.on('chat-message', message => {})

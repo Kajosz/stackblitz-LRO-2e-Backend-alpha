@@ -14,11 +14,11 @@ const actions = [READ_ACTION, WRITE_ACTION, UPDATE_ACTION, DELETE_ACTION];
 //const dataSource = FROM .env
 const dbURL = "https://data.mongodb-api.com/app/data-sqxht/endpoint/data/v1/action/";
 //const dbApiKey = FROM .env
-const headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Request-Headers': '*',
-    'api-key': dbApiKey
-  };
+// const headers = {
+//     'Content-Type': 'application/json',
+//     'Access-Control-Request-Headers': '*',
+//     'api-key': dbApiKey
+//   };
 
 // Let's roll one constants
 
