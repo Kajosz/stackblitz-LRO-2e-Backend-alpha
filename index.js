@@ -45,4 +45,6 @@ io.on('connection', (socket) => {
   socket.on('chat-message', message => {})
 })
 
-server.listen(3002);
+server.listen(3002, ()=> {
+  console.log('jestem serverem Socketa.')
+});
