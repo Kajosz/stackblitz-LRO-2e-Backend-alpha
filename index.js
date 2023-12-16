@@ -74,6 +74,7 @@ io.on('connection', (socket) => {
     console.log('a user connected');
     socket.emit('dzien Dobry?')
     socket.on('message', (ms) => {
+        console.log('komunikacja')
         io.emit('message', ms);
     });
 });
